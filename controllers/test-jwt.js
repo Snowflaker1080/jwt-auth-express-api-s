@@ -21,6 +21,7 @@ const token = jwt.sign({ user }, process.env.JWT_SECRET);
 
 // controllers/test-jwt.js
 router.post('/verify-token', (req, res) => {
+  console.log(req.headers);
   try {
     const token = req.headers.authorization.split(' ')[1];
     // Add in verify method
