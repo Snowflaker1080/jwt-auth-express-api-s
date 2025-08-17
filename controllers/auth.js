@@ -1,8 +1,8 @@
-
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require("../models/User");
+const jwt = require("jsonwebtoken"); // was missing previously
 
 const saltRounds = 12;
 
@@ -28,7 +28,7 @@ router.post('/sign-up', async (req, res) => {
     // Send the token instead of the user
     res.status(201).json({ token });
   } catch (err) {
-    res.status(400).json({ err: err.message });
+    res.status(500).json({ err: err.message });
   }
 });
 
